@@ -4,42 +4,42 @@
         "name":"Gita Chrome Extension",
         "description":"Find the sloka from Bhagavat Gita by choosing any chapter and sloka",
         "gh_link":"https://github.com/dhirajraut1/GitaChromeExtension",
-        "website":"/GitaChromeExtension"
+        "website":"https://dhirajraut27.com.np/GitaChromeExtension"
     },
     {
         "id":2,
         "name":"BS ICS File",
         "description":"The ics file for your favorite calendar application. This repo contains the iCalendar file for the Bikram Sambat 2080. The files are available month wise as well as for the whole year.",
         "gh_link":"https://github.com/dhirajraut1/BS-ICS",
-        "website":"/"
+        "website":"#"
     },
     {
         "id":3,
         "name":"Daily Prices Email",
         "description":"Receive daily email in your inbox. The email contains the price of the fuel and the vegetables.",
         "gh_link":"https://github.com/dhirajraut1/daily-prices-email",
-        "website":"/"
+        "website":"#"
     },
     {
         "id":4,
         "name":"Fuel Prices",
         "description":"A simple website that displays the prices of the fuel in the Kathmandu region.",
         "gh_link":"https://github.com/dhirajraut1/fuel-prices",
-        "website":"/fuel-prices"
+        "website":"https://dhirajraut27.com.np/fuel-prices"
     },
     {
         "id":5,
         "name":"Nepali Panchanga",
         "description":"Chrome extension that contains the nepali calendar, panchang and horoscope.",
         "gh_link":"https://github.com/dhirajraut1/nepali-panchang",
-        "website":"/"
+        "website":"#"
     },
     {
         "id":6,
         "name":"Web Info",
         "description":"This website is developed to show what permissions can be gathered by the website from the viewer I have added the features of showing the IP address, GPS address, OS info, browser info and ISP info. Further features will be added.",
         "gh_link":"https://github.com/dhirajraut1/webinfo",
-        "website":"/webinfo"
+        "website":"https://dhirajraut27.com.np/webinfo"
     },
     {
         "id":7,
