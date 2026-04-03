@@ -1,0 +1,121 @@
+import BlogPost from "../../layouts/BlogPost.astro";
+
+<BlogPost
+  title="How to Write Bug Reports That Developers Actually Love"
+  excerpt="A guide to crafting clear, actionable, and reproducible bug reports that speed up fixes and improve dev-QA collaboration."
+  date="2024-09-22"
+  readTime="5 min read"
+  tags={['Bug Reports', 'JIRA', 'Collaboration']}
+>
+
+## Why Most Bug Reports Fail
+
+I've reviewed hundreds of bug reports over my career. The majority have the same problem: they describe **what happened** but not **how to reproduce it**. A developer reading "the button doesn't work" has almost no actionable information.
+
+A great bug report is a complete story that tells the developer exactly what the system did, what it should have done, and precisely how to see it for themselves.
+
+## The Anatomy of a Perfect Bug Report
+
+### 1. Title — Be Specific
+
+**Bad:** `Login not working`
+
+**Good:** `POST /auth/login returns 500 when email contains uppercase characters`
+
+The title should be a one-line summary that immediately communicates scope and impact.
+
+### 2. Severity and Priority
+
+Separate these two — they're different:
+
+- **Severity** = technical impact (how bad is the broken behavior?)
+- **Priority** = business urgency (how quickly must this be fixed?)
+
+A typo on the homepage might be **low severity** but **high priority** if the CEO is demoing tomorrow.
+
+### 3. Environment
+
+```
+Environment: Staging
+Browser: Chrome 119 on macOS Sonoma
+User Role: Admin
+Test Account: testadmin@company.com
+Date Found: 2024-09-22
+```
+
+### 4. Steps to Reproduce
+
+This is the most important section. Be surgical:
+
+```
+1. Navigate to https://staging.myapp.com/login
+2. Enter email: "Test.User@EXAMPLE.COM" (with mixed case)
+3. Enter password: "ValidPassword123"
+4. Click "Sign In" button
+5. Observe the response
+```
+
+Every step should be numbered and atomic. No "do the usual login flow" — spell it out.
+
+### 5. Expected vs Actual
+
+```
+Expected: User is authenticated and redirected to /dashboard
+
+Actual: HTTP 500 Internal Server Error returned.
+        Response body: {"error": "User not found"}
+        (The user exists in the database with lowercase email)
+```
+
+### 6. Evidence
+
+Always attach:
+
+- Screenshots or screen recordings
+- Network request/response (HAR file or screenshot)
+- Console errors
+- Relevant logs if available
+
+## A Template You Can Copy
+
+```markdown
+## Summary
+
+[One clear sentence describing what's broken]
+
+## Environment
+
+- Environment: [dev/staging/production]
+- Browser/OS: [Chrome 119 / macOS Sonoma]
+- User Role: [admin/user/guest]
+
+## Steps to Reproduce
+
+1.
+2.
+3.
+
+## Expected Result
+
+[What should happen]
+
+## Actual Result
+
+[What actually happens]
+
+## Severity: [Critical/High/Medium/Low]
+
+## Priority: [High/Medium/Low]
+
+## Evidence
+
+[Screenshots, recordings, logs]
+```
+
+## Developer-Friendly Extras
+
+If you can identify the probable cause, include a **"Hypothesis"** section. Developers appreciate it and it shows you understand the system. Even if you're wrong, it starts a productive conversation.
+
+Bug reports are communication artifacts. The better they are, the faster bugs get fixed — and the more developers trust and respect the QA team.
+
+</BlogPost>

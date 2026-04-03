@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    id: 'gita',
+    title: 'Gita Chrome Extension',
+    type: 'Automation + Manual',
+    status: 'Completed',
+    description: 'A Chrome extension for exploring Bhagavat Gita slokas by chapter and verse. I designed and executed a comprehensive QA strategy covering functional testing, cross-browser compatibility, extension lifecycle, and automated E2E flows.',
+    challenge: 'Chrome extensions have a unique DOM structure and messaging system. Standard Selenium approaches don\'t work — I had to leverage Playwright\'s experimental Chrome extension support and custom CDP commands.',
+    approach: 'Built a Page Object Model architecture in Playwright, covered popup rendering, background script messaging, and sloka filtering logic. Also ran manual accessibility audits using axe-core.',
+    results: ['100% critical path coverage', '23 automation scripts', '0 production bugs post-launch', 'Accessibility score improved to 94/100'],
+    tags: ['Playwright', 'Chrome Extension', 'E2E', 'Accessibility', 'Manual'],
+    icon: '📖',
+    color: '#00e5a0',
+    github: 'https://github.com/dhirajraut1',
+  },
+  {
+    id: 'prices',
+    title: 'Daily Prices Email',
+    type: 'API Testing',
+    status: 'Active',
+    description: 'An automated email system that delivers daily fuel and vegetable prices to subscribers. QA scope included email delivery validation, data scraping accuracy, scheduling reliability, and error handling.',
+    challenge: 'Testing an email system end-to-end requires validating both the API layer and actual email delivery. Ensuring price data accuracy from scraping was the hardest part.',
+    approach: 'Created a full Postman collection with 40+ tests covering the data pipeline: scraper output, data transformation, API endpoints, and email delivery via webhook interception.',
+    results: ['40+ Postman test cases', 'Newman CI integration', 'Data accuracy validated to 99.8%', 'Email delivery rate: 100%'],
+    tags: ['Postman', 'Newman', 'API Testing', 'Email', 'CI/CD'],
+    icon: '📧',
+    color: '#ff6c37',
+    github: 'https://github.com/dhirajraut1',
+  },
+  {
+    id: 'fuel',
+    title: 'Fuel Prices Website',
+    type: 'Manual + Performance',
+    status: 'Completed',
+    description: 'A simple web dashboard showing live fuel prices in the Kathmandu region. QA focused on data accuracy, UI responsiveness, and page performance under load.',
+    challenge: 'Real-time price data changes frequently — validating freshness and accuracy required custom test hooks in the staging environment.',
+    approach: 'Combined manual exploratory testing with k6 performance scripts. Ran load tests simulating 200 concurrent users and measured Core Web Vitals.',
+    results: ['LCP improved by 40%', 'Load tested to 200 concurrent users', '0 critical UI bugs', 'Cross-browser tested on 6 browsers'],
+    tags: ['Manual Testing', 'k6', 'Performance', 'Web Vitals', 'Cross-browser'],
+    icon: '⛽',
+    color: '#ffd93d',
+    github: 'https://github.com/dhirajraut1',
+  },
+  {
+    id: 'panchanga',
+    title: 'Nepali Panchanga Extension',
+    type: 'Manual + Automation',
+    status: 'Completed',
+    description: 'A Chrome extension featuring the Nepali calendar, panchang calculations, and daily horoscope. QA scope included date calculation accuracy, localization, and extension stability.',
+    challenge: 'Nepali calendar (Bikram Sambat) has complex calculation rules. Verifying date conversions required domain expertise and extensive boundary value testing.',
+    approach: 'Manually verified 200+ date conversions against authoritative Nepali calendars. Automated regression testing for core calculation functions with unit-level Playwright scripts.',
+    results: ['200+ date conversions verified', 'Zero date calculation bugs in production', 'Localization fully tested', '5-star Chrome Web Store rating'],
+    tags: ['Manual Testing', 'Playwright', 'Localization', 'Chrome Extension', 'Date Logic'],
+    icon: '📅',
+    color: '#a09cff',
+    github: 'https://github.com/dhirajraut1',
+  },
+  {
+    id: 'webinfo',
+    title: 'Web Info — Browser Privacy Tool',
+    type: 'Security + Manual',
+    status: 'Active',
+    description: 'A privacy-awareness tool that reveals what data websites can collect: IP, GPS, OS, browser info, and ISP. QA focused on data accuracy, privacy edge cases, and permission flow testing.',
+    challenge: 'Browser permission APIs behave differently across browsers and OS combinations. Ensuring accurate data collection across 6 browser × 3 OS combinations was complex.',
+    approach: 'Built a comprehensive compatibility matrix. Manually tested permission grant/deny/revoke flows. Validated data accuracy against known environments. Ran security-focused penetration probes.',
+    results: ['6 browsers × 3 OS tested', 'Permission flow 100% accurate', 'No data leakage found', 'Security audit passed'],
+    tags: ['Security Testing', 'Manual', 'Cross-browser', 'Privacy', 'Permissions'],
+    icon: '🔍',
+    color: '#ff6b6b',
+    github: 'https://github.com/dhirajraut1',
+  },
+  {
+    id: 'nepal',
+    title: 'Nepal Local Government App',
+    type: 'Manual + Functional',
+    status: 'Completed',
+    description: 'A directory application for Nepal\'s local government bodies — filtering provinces, districts, and municipalities. QA coverage included data correctness, filter logic, and accessibility.',
+    challenge: '753 local government bodies with complex hierarchical filtering. Data integrity testing required cross-referencing against official government records.',
+    approach: 'Designed a systematic data validation strategy using equivalence partitioning. Manually verified filtering logic for all 7 provinces. Conducted WCAG 2.1 AA accessibility audit.',
+    results: ['753 records validated', 'Filter accuracy: 100%', 'WCAG 2.1 AA compliant', 'No data inconsistencies found'],
+    tags: ['Manual Testing', 'Data Validation', 'Accessibility', 'WCAG', 'Functional'],
+    icon: '🗺️',
+    color: '#28c840',
+    github: 'https://github.com/dhirajraut1',
+  },
+];
+---
+
+<Layout title="Projects — Dhiraj Raut QA Engineer" description="QA projects by Dhiraj Raut — automation frameworks, API test suites, and testing strategies.">
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="section-label">My Work</div>
+      <h1>QA <span class="text-primary">Projects</span></h1>
+      <p class="hero-sub">Each project tells a story of bugs found, risks mitigated, and quality shipped.</p>
+
+      <div class="projects-summary">
+        {[
+          { n: '10+', label: 'Projects' },
+          { n: '500+', label: 'Test Cases' },
+          { n: '3+', label: 'Years' },
+          { n: '0', label: 'Prod Bugs' },
+        ].map(s => (
+          <div class="ps-item">
+            <span class="ps-num">{s.n}</span>
+            <span class="ps-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section">
+    <div class="container">
+      <div class="projects-list">
+        {projects.map((project, i) => (
+          <article class="project-detail" id={project.id} data-animate>
+            <div class="pd-header">
+              <div class="pd-icon" style={`background: ${project.color}18; border-color: ${project.color}33;`}>
+                <span style="font-size: 1.5rem;">{project.icon}</span>
+              </div>
+              <div class="pd-meta">
+                <div style="display:flex; gap: 0.5rem; flex-wrap:wrap; margin-bottom: 0.5rem;">
+                  <span class="badge">{project.type}</span>
+                  <span class="badge green">{project.status}</span>
+                </div>
+                <h2 class="pd-title">{project.title}</h2>
+              </div>
+              <a href={project.github} target="_blank" rel="noopener" class="btn btn-outline pd-github">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                GitHub
+              </a>
+            </div>
+
+            <div class="pd-body">
+              <div class="pd-left">
+                <p class="pd-desc">{project.description}</p>
+
+                <div class="pd-section">
+                  <div class="section-label" style="margin-bottom: 0.5rem;">Challenge</div>
+                  <p>{project.challenge}</p>
+                </div>
+
+                <div class="pd-section">
+                  <div class="section-label" style="margin-bottom: 0.5rem;">Approach</div>
+                  <p>{project.approach}</p>
+                </div>
+
+                <div class="project-tags" style="margin-top: 1.25rem;">
+                  {project.tags.map(t => <span class="tag">{t}</span>)}
+                </div>
+              </div>
+
+              <div class="pd-results">
+                <div class="section-label" style="margin-bottom: 0.75rem;">Results</div>
+                <ul class="results-list">
+                  {project.results.map(r => (
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.text-primary { color: var(--primary); }
+.page-hero {
+  padding: 8rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 15% 50%, rgba(0,229,160,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin: 0.5rem 0 1rem; }
+.hero-sub { color: var(--text-2); font-size: 1rem; margin-bottom: 2.5rem; }
+
+.projects-summary {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.ps-item { display: flex; flex-direction: column; }
+.ps-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+.ps-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem; }
+
+/* Project detail */
+.projects-list { display: flex; flex-direction: column; gap: 2rem; }
+.project-detail {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.project-detail:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+}
+.pd-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.pd-icon {
+  width: 60px; height: 60px;
+  border-radius: var(--radius-lg);
+  border: 1px solid;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.pd-meta { flex: 1; }
+.pd-title { font-size: 1.4rem; }
+.pd-github { margin-left: auto; flex-shrink: 0; }
+
+.pd-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2rem;
+  padding: 2rem;
+}
+.pd-desc { color: var(--text-2); line-height: 1.75; margin-bottom: 1.5rem; }
+.pd-section { margin-bottom: 1.25rem; }
+.pd-section p { color: var(--text-2); font-size: 0.87rem; line-height: 1.75; }
+
+.pd-results {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  height: fit-content;
+}
+.results-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.results-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.83rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+.results-list li svg { flex-shrink: 0; margin-top: 1px; }
+
+@media (max-width: 768px) {
+  .pd-body { grid-template-columns: 1fr; }
+  .pd-header { flex-wrap: wrap; }
+  .pd-github { margin-left: 0; }
+}
+</style>

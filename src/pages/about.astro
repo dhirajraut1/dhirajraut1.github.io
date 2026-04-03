@@ -1,0 +1,332 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About — Dhiraj Raut QA Engineer" description="Learn about Dhiraj Raut's journey as a Software QA Engineer, testing philosophy, and skills.">
+  <!-- Page Header -->
+  <section class="page-hero">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="section-label">About Me</div>
+      <h1>The <span class="text-primary">Quality Mindset</span></h1>
+      <p class="hero-sub">3+ years turning "it works on my machine" into "it works everywhere."</p>
+    </div>
+  </section>
+
+  <!-- Bio -->
+  <section class="section" id="bio">
+    <div class="container">
+      <div class="bio-grid">
+        <div class="bio-content" data-animate>
+          <div class="section-label">Who I Am</div>
+          <h2>Driven by the <span class="text-primary">Pursuit of Perfection</span></h2>
+          <p>
+            Welcome! I'm <strong>Dhiraj Raut</strong>, a Software Quality Assurance Engineer based in Kathmandu, Nepal. With over 3 years of hands-on experience, I've honed my skills across manual testing, API validation, and test automation.
+          </p>
+          <p>
+            My journey in QA started with a simple conviction: every user deserves software that just works. Whether I'm meticulously tracing a bug through a convoluted UI flow, writing comprehensive Postman test collections, or building Playwright automation suites — I bring the same attention to detail and strategic thinking.
+          </p>
+          <p>
+            Beyond testing, I love contributing to open-source, exploring Nepal's tech ecosystem, and sharing what I learn through my blog.
+          </p>
+          <div class="bio-links">
+            <a href="/contact" class="btn btn-primary">Work With Me</a>
+            <a href="https://github.com/dhirajraut1" target="_blank" rel="noopener" class="btn btn-outline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="bio-info" data-animate data-delay="2">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">dhiraj.json</span>
+            </div>
+            <div class="terminal-body" style="font-size: 0.8rem;">
+              <div><span style="color: var(--border-accent)">{`{`}</span></div>
+              <div>&nbsp;&nbsp;<span class="str">"name"</span>: <span class="str">"Dhiraj Raut"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="str">"role"</span>: <span class="str">"QA Engineer"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="str">"location"</span>: <span class="str">"Kathmandu, Nepal"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="str">"experience"</span>: <span style="color: #ffd93d">"3+ years"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="str">"specialties"</span>: [</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Manual Testing"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"API Testing"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Test Automation"</span></div>
+              <div>&nbsp;&nbsp;],</div>
+              <div>&nbsp;&nbsp;<span class="str">"available"</span>: <span style="color: #28c840">true</span>,</div>
+              <div>&nbsp;&nbsp;<span class="str">"email"</span>: <span class="str">"rautdhiraj277@gmail.com"</span></div>
+              <div><span style="color: var(--border-accent)">{`}`}</span></div>
+            </div>
+          </div>
+
+          <div class="quick-facts">
+            {[
+              { icon: '📍', label: 'Location', value: 'Kathmandu, Nepal' },
+              { icon: '🎓', label: 'Degree', value: 'Computer Science' },
+              { icon: '🌐', label: 'Languages', value: 'Nepali, English, Hindi' },
+              { icon: '⚡', label: 'Interests', value: 'QA, OSS, Memes' },
+            ].map(f => (
+              <div class="quick-fact">
+                <span class="qf-icon">{f.icon}</span>
+                <div>
+                  <div class="qf-label">{f.label}</div>
+                  <div class="qf-value">{f.value}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline / Experience -->
+  <section class="section" style="background: var(--bg-2);">
+    <div class="container">
+      <div class="section-label">Experience</div>
+      <h2 data-animate>My <span class="text-primary">Journey</span></h2>
+
+      <div class="timeline" data-animate data-delay="1">
+        {[
+          {
+            year: 'Mar 2025 – Present',
+            role: 'QA Engineer',
+            company: 'f1Soft International, Lalitpur',
+            desc: 'Performing Manual and Automation testing for multiple projects. Building Playwright automation frameworks, conducting API security testing, and mentoring junior testers.',
+            tags: ['Playwright', 'API Testing', 'Mentoring'],
+            active: true,
+          },
+          {
+            year: 'Sep 2022 – Sep 2024',
+            role: 'QA Engineer',
+            company: 'Keela Nepal, Kathmandu',
+            desc: 'Owned the entire QA lifecycle for a Vue.js + FastAPI product. Reduced regression testing time by 60% through automation. Created and maintained 500+ test cases.',
+            tags: ['Playwright', 'GitHub Actions', 'Linear'],
+            active: false,
+          },
+          {
+            year: 'Jun 2022 – Sep 2022',
+            role: 'QA Intern',
+            company: 'Keela Nepal, Kathmandu',
+            desc: 'Performed exploratory and regression testing on web applications. Wrote detailed bug reports in Linear and collaborated closely with devs during sprint cycles.',
+            tags: ['Manual Testing', 'Linear', 'Regression'],
+            active: false,
+          },
+        ].map(item => (
+          <div class={`timeline-item ${item.active ? 'active' : ''}`}>
+            <div class="timeline-line">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-year">{item.year}</div>
+              <h3>{item.role}</h3>
+              <div class="timeline-company">{item.company}</div>
+              <p>{item.desc}</p>
+              <div class="project-tags" style="margin-top: 0.75rem;">
+                {item.tags.map(t => <span class="tag">{t}</span>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-label">Skills</div>
+      <h2 data-animate>Technical <span class="text-primary">Proficiency</span></h2>
+
+      <div class="skills-grid" data-animate data-delay="1">
+        {[
+          { skill: 'Manual & Exploratory Testing', level: 95 },
+          { skill: 'API Testing (Postman/Newman)', level: 90 },
+          { skill: 'Playwright E2E Automation', level: 85 },
+          { skill: 'Test Planning & Strategy', level: 90 },
+          { skill: 'Bug Reporting & JIRA', level: 95 },
+          { skill: 'Performance Testing (k6)', level: 70 },
+          { skill: 'CI/CD Integration', level: 75 },
+        ].map(s => (
+          <div class="skill-row">
+            <div class="skill-header">
+              <span class="skill-name">{s.skill}</span>
+              <span class="skill-pct">{s.level}%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style={`--target: ${s.level}%`}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testing Philosophy -->
+  <section class="section" style="background: var(--bg-2);">
+    <div class="container">
+      <div class="section-label">Philosophy</div>
+      <h2 data-animate>How I Think About <span class="text-primary">Quality</span></h2>
+      <div class="philosophy-grid" data-animate data-delay="1">
+        {[
+          { num: '01', title: 'Shift Left Testing', desc: 'Quality is everyone\'s responsibility. I involve QA from day one — in design reviews, sprint planning, and architecture discussions.' },
+          { num: '02', title: 'Risk-Based Approach', desc: 'Not all bugs are equal. I prioritize testing based on business impact, user frequency, and technical risk to maximize coverage efficiency.' },
+          { num: '03', title: 'Automate Smartly', desc: 'Automation isn\'t a silver bullet. I automate the repetitive, stable flows — and preserve exploratory testing for where human intuition wins.' },
+          { num: '04', title: 'Continuous Feedback', desc: 'Fast feedback loops prevent compounding issues. I integrate tests into CI/CD so every commit is validated before it reaches production.' },
+        ].map(p => (
+          <div class="card philosophy-card">
+            <div class="phil-num">{p.num}</div>
+            <h3>{p.title}</h3>
+            <p>{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.text-primary { color: var(--primary); }
+
+/* Page hero */
+.page-hero {
+  padding: 8rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(0,229,160,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin: 0.5rem 0 1rem;
+}
+.hero-sub { color: var(--text-2); font-size: 1rem; }
+
+/* Bio */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.bio-content p {
+  color: var(--text-2);
+  margin-top: 1rem;
+  line-height: 1.75;
+}
+.bio-content h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.25rem; }
+.bio-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; }
+
+.quick-facts {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.quick-fact {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.qf-icon { font-size: 1rem; }
+.qf-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em; }
+.qf-value { font-size: 0.82rem; color: var(--text); font-weight: 500; }
+
+/* Timeline */
+.timeline { margin-top: 2.5rem; position: relative; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.timeline-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+}
+.timeline-line::after {
+  content: '';
+  flex: 1;
+  width: 1px;
+  background: var(--border);
+  margin-top: 8px;
+}
+.timeline-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--border-accent);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.timeline-item.active .timeline-dot {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--primary);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.35rem;
+}
+.timeline-content h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+.timeline-company {
+  font-size: 0.82rem;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  margin-bottom: 0.6rem;
+}
+.timeline-content p { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; }
+
+/* Skills */
+.skills-grid { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; max-width: 700px; }
+.skill-header { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
+.skill-name { font-size: 0.85rem; color: var(--text); }
+.skill-pct { font-family: var(--font-mono); font-size: 0.75rem; color: var(--primary); }
+.skill-bar { height: 4px; background: var(--surface-2); border-radius: 2px; overflow: hidden; }
+.skill-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), rgba(0,229,160,0.5));
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.skills-grid.in-view .skill-fill { width: var(--target); }
+
+/* Philosophy */
+.philosophy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2rem; }
+.philosophy-card { position: relative; padding-top: 1.5rem; }
+.phil-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.philosophy-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.philosophy-card p { font-size: 0.83rem; color: var(--text-2); line-height: 1.65; }
+
+@media (max-width: 768px) {
+  .bio-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .philosophy-grid { grid-template-columns: 1fr; }
+}
+</style>

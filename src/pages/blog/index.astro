@@ -1,0 +1,226 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const posts = [
+  {
+    slug: 'playwright-vs-selenium',
+    title: 'Playwright vs Selenium: Which Should QA Engineers Choose in 2024?',
+    excerpt: 'A comprehensive comparison of the two most popular browser automation frameworks — from setup complexity to CI/CD integration.',
+    date: '2024-11-15',
+    readTime: '8 min read',
+    tags: ['Playwright', 'Selenium', 'Automation'],
+    featured: true,
+  },
+  {
+    slug: 'api-testing-postman-guide',
+    title: 'The Complete API Testing Guide with Postman and Newman',
+    excerpt: 'From writing your first collection to running tests in a GitHub Actions pipeline — everything a QA engineer needs to master API testing.',
+    date: '2024-10-28',
+    readTime: '12 min read',
+    tags: ['API Testing', 'Postman', 'Newman', 'CI/CD'],
+    featured: true,
+  },
+  {
+    slug: 'test-pyramid-in-practice',
+    title: 'The Test Pyramid Isn\'t Dead — You\'re Just Using It Wrong',
+    excerpt: 'The test pyramid has been misunderstood for years. Here\'s how to actually apply it to get maximum coverage with minimum flakiness.',
+    date: '2024-10-10',
+    readTime: '6 min read',
+    tags: ['Strategy', 'Test Pyramid', 'Best Practices'],
+    featured: false,
+  },
+  {
+    slug: 'bug-report-writing',
+    title: 'How to Write Bug Reports That Developers Actually Love',
+    excerpt: 'A guide to crafting clear, actionable, and reproducible bug reports that speed up fixes and improve dev-QA collaboration.',
+    date: '2024-09-22',
+    readTime: '5 min read',
+    tags: ['Bug Reports', 'JIRA', 'Collaboration'],
+    featured: false,
+  },
+  {
+    slug: 'performance-testing-k6',
+    title: 'Load Testing Your APIs with k6: A Practical Introduction',
+    excerpt: 'Get started with k6 to simulate real user load on your APIs. Covers VU configuration, thresholds, and reading results.',
+    date: '2024-09-05',
+    readTime: '9 min read',
+    tags: ['Performance', 'k6', 'Load Testing'],
+    featured: false,
+  },
+
+];
+
+const featured = posts.filter(p => p.featured);
+const rest = posts.filter(p => !p.featured);
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Layout title="Blog — Dhiraj Raut QA Engineer" description="QA insights, testing tutorials, and software quality articles by Dhiraj Raut.">
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="section-label">Blog</div>
+      <h1>QA <span class="text-primary">Insights</span></h1>
+      <p class="hero-sub">Thoughts on testing, quality strategy, and building better software.</p>
+    </div>
+  </section>
+
+  <!-- Featured posts -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Featured Articles</div>
+      <div class="featured-grid" data-animate>
+        {featured.map(post => (
+          <a href={`/blog/${post.slug}`} class="featured-post card">
+            <div class="fp-tags">
+              {post.tags.slice(0, 2).map(t => <span class="tag">{t}</span>)}
+              <span class="fp-read">{post.readTime}</span>
+            </div>
+            <h2 class="fp-title">{post.title}</h2>
+            <p class="fp-excerpt">{post.excerpt}</p>
+            <div class="fp-footer">
+              <time class="fp-date">{formatDate(post.date)}</time>
+              <span class="fp-link">
+                Read article
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- All posts -->
+      <div class="divider"></div>
+      <div class="section-label">All Articles</div>
+      <div class="posts-list">
+        {rest.map((post, i) => (
+          <a href={`/blog/${post.slug}`} class="post-row" data-animate data-delay={String(i + 1)}>
+            <div class="pr-left">
+              <div class="pr-tags">
+                {post.tags.slice(0, 2).map(t => <span class="badge">{t}</span>)}
+              </div>
+              <h3 class="pr-title">{post.title}</h3>
+              <p class="pr-excerpt">{post.excerpt}</p>
+            </div>
+            <div class="pr-meta">
+              <time class="pr-date">{formatDate(post.date)}</time>
+              <span class="pr-read">{post.readTime}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.text-primary { color: var(--primary); }
+.page-hero {
+  padding: 8rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 15% 50%, rgba(0,229,160,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin: 0.5rem 0 1rem; }
+.hero-sub { color: var(--text-2); font-size: 1rem; }
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+.featured-post {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+.featured-post:hover .fp-title { color: var(--primary); }
+.fp-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.fp-read {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-3);
+  margin-left: auto;
+  letter-spacing: 0.05em;
+}
+.fp-title {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  transition: color 0.2s;
+  color: var(--text);
+}
+.fp-excerpt { font-size: 0.84rem; color: var(--text-2); line-height: 1.7; flex: 1; }
+.fp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+.fp-date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-3); }
+.fp-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Post rows */
+.posts-list { margin-top: 1rem; display: flex; flex-direction: column; }
+.post-row {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.post-row:hover { padding-left: 0.5rem; }
+.post-row:hover .pr-title { color: var(--primary); }
+.pr-left { flex: 1; }
+.pr-tags { display: flex; gap: 0.4rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+.pr-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+  color: var(--text);
+}
+.pr-excerpt { font-size: 0.82rem; color: var(--text-2); line-height: 1.65; }
+.pr-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  flex-shrink: 0;
+  padding-top: 0.25rem;
+}
+.pr-date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-3); white-space: nowrap; }
+.pr-read { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-3); white-space: nowrap; }
+
+@media (max-width: 768px) {
+  .featured-grid { grid-template-columns: 1fr; }
+  .post-row { flex-direction: column; gap: 0.75rem; }
+  .pr-meta { flex-direction: row; align-items: center; }
+}
+</style>

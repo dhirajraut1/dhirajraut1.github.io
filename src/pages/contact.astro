@@ -1,0 +1,285 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact — Dhiraj Raut QA Engineer" description="Get in touch with Dhiraj Raut for QA consulting, collaboration, or full-time roles.">
+
+  <section class="page-hero">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="section-label">Get In Touch</div>
+      <h1>Let's <span class="text-primary">Talk Quality</span></h1>
+      <p class="hero-sub">Have a project that needs a QA eye? Want to collaborate? I'm all ears.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Form -->
+        <div class="contact-form-wrap" data-animate>
+          <div class="terminal form-terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">contact-form.sh</span>
+            </div>
+            <div class="terminal-body" style="font-size:0.75rem; padding-bottom: 0.5rem;">
+              <span class="comment"># Fill in the form below to initiate contact</span>
+            </div>
+          </div>
+
+          <form action="https://formspree.io/f/xkndqpdy" method="POST" class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="QA Consulting Inquiry" required />
+            </div>
+            <div class="form-group">
+              <label for="inquiry">Type of Inquiry</label>
+              <select id="inquiry" name="inquiry">
+                <option value="">Select inquiry type...</option>
+                <option value="hire">Full-time QA Role</option>
+                <option value="contract">Contract / Freelance</option>
+                <option value="consult">QA Strategy Consulting</option>
+                <option value="collab">Open Source Collaboration</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" rows="6" placeholder="Tell me about your project or role..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
+              Send Message
+            </button>
+
+            <div class="form-success" id="formSuccess">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="var(--primary)" stroke-width="1.5"/><path d="M6 10l3 3 5-5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Message sent! I'll get back to you within 24 hours.
+            </div>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="contact-info" data-animate data-delay="2">
+          <div class="contact-card">
+            <h3>Let's Build <span class="text-primary">Something</span></h3>
+            <p>Whether it's a quick question or a long-term engagement — I'm happy to chat about quality assurance, testing strategies, or just software in general.</p>
+          </div>
+
+          <div class="contact-methods">
+            {[
+              {
+                icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>`,
+                label: 'Email',
+                value: 'rautdhiraj277@gmail.com',
+                href: 'mailto:rautdhiraj277@gmail.com',
+              },
+              {
+                icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>`,
+                label: 'GitHub',
+                value: 'github.com/dhirajraut1',
+                href: 'https://github.com/dhirajraut1',
+              },
+              {
+                icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
+                label: 'LinkedIn',
+                value: 'linkedin.com/in/dhirajraut1',
+                href: 'https://linkedin.com/in/dhirajraut1',
+              },
+            ].map(m => (
+              <a href={m.href} target="_blank" rel="noopener" class="contact-method">
+                <div class="cm-icon" set:html={m.icon}></div>
+                <div>
+                  <div class="cm-label">{m.label}</div>
+                  <div class="cm-value">{m.value}</div>
+                </div>
+                <svg class="cm-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </a>
+            ))}
+          </div>
+
+          <div class="availability-card">
+            <div class="av-header">
+              <span class="status-dot"></span>
+              <span class="av-title">Currently Available</span>
+            </div>
+            <p class="av-text">Open to full-time QA roles, contract work, and consulting engagements. Response time: within 24 hours.</p>
+            <div class="av-time">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Kathmandu (UTC+5:45)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const success = document.getElementById('formSuccess');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    // Simulate submission (replace with real endpoint)
+    await new Promise(resolve => setTimeout(resolve, 1200));
+
+    form.reset();
+    btn.style.display = 'none';
+    if (success) success.style.display = 'flex';
+  });
+</script>
+
+<style>
+.text-primary { color: var(--primary); }
+.page-hero {
+  padding: 8rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 15% 50%, rgba(0,229,160,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin: 0.5rem 0 1rem; }
+.hero-sub { color: var(--text-2); font-size: 1rem; }
+
+/* Contact grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Form terminal */
+.form-terminal { margin-bottom: 0; border-radius: var(--radius-lg) var(--radius-lg) 0 0; border-bottom: none; }
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  padding: 1.75rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.1rem; }
+label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+input, textarea, select {
+  width: 100%;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text);
+  transition: border-color 0.2s;
+  outline: none;
+  appearance: none;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-dim); }
+input::placeholder, textarea::placeholder { color: var(--text-3); }
+textarea { resize: vertical; }
+.submit-btn { width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.85rem; margin-top: 0.5rem; }
+.form-success {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--primary-dim);
+  border: 1px solid rgba(0,229,160,0.2);
+  border-radius: var(--radius);
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+/* Contact info */
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.contact-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+.contact-card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.7; }
+.contact-methods { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+.contact-method:hover { border-color: var(--primary); transform: translateX(4px); }
+.cm-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.cm-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; }
+.cm-value { font-size: 0.82rem; color: var(--text); }
+.cm-arrow { margin-left: auto; color: var(--text-3); opacity: 0; transition: opacity 0.2s; }
+.contact-method:hover .cm-arrow { opacity: 1; color: var(--primary); }
+
+/* Availability */
+.availability-card {
+  background: var(--primary-dim);
+  border: 1px solid rgba(0,229,160,0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+.av-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.av-title { font-family: var(--font-mono); font-size: 0.78rem; color: var(--primary); font-weight: 600; }
+.av-text { font-size: 0.82rem; color: var(--text-2); line-height: 1.65; margin-bottom: 0.75rem; }
+.av-time {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-3);
+}
+
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>

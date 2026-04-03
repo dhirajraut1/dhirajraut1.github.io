@@ -1,0 +1,104 @@
+import BlogPost from "../../layouts/BlogPost.astro";
+
+<BlogPost
+  title="Playwright vs Selenium: Which Should QA Engineers Choose in 2024?"
+  excerpt="A comprehensive comparison of the two most popular browser automation frameworks — from setup complexity to CI/CD integration."
+  date="2024-11-15"
+  readTime="8 min read"
+  tags={['Playwright', 'Selenium', 'Automation', 'Framework']}
+>
+
+## The Question Every QA Engineer Faces
+
+When you join a new team or start a new project, one of the first architecture decisions is: **which browser automation framework do we use?** Selenium has been the industry standard for over a decade. Playwright burst onto the scene in 2020 and quickly became the community darling. So which one should you choose in 2024?
+
+Let me share what I've learned from using both extensively.
+
+## A Quick Overview
+
+**Selenium** was created in 2004 by Jason Huggins and became the bedrock of browser automation. It works with every major browser through the WebDriver protocol and supports virtually every programming language.
+
+**Playwright** was created by Microsoft and released in 2020. It supports Chromium, Firefox, and WebKit (Safari) through a unified API and is built for modern web applications.
+
+## The Comparison
+
+### Setup and Configuration
+
+```javascript
+// Playwright — up and running in 5 minutes
+import { test, expect } from "@playwright/test";
+
+test("login flow", async ({ page }) => {
+  await page.goto("https://myapp.com/login");
+  await page.fill("#email", "user@test.com");
+  await page.fill("#password", "secret123");
+  await page.click("button[type=submit]");
+  await expect(page).toHaveURL("/dashboard");
+});
+```
+
+```java
+// Selenium — more boilerplate required
+WebDriver driver = new ChromeDriver();
+driver.get("https://myapp.com/login");
+driver.findElement(By.id("email")).sendKeys("user@test.com");
+driver.findElement(By.id("password")).sendKeys("secret123");
+driver.findElement(By.cssSelector("button[type=submit]")).click();
+// Now manually wait for redirect...
+new WebDriverWait(driver, Duration.ofSeconds(10))
+  .until(ExpectedConditions.urlContains("/dashboard"));
+```
+
+Playwright wins on setup time. A fresh install with `npm init playwright@latest` gives you a full project with example tests, HTML reporter, and configuration in under 5 minutes.
+
+### Auto-Waiting
+
+This is Playwright's killer feature. Every action automatically waits for the element to be actionable:
+
+- Visible in the viewport
+- Not hidden behind another element
+- Not disabled
+- Animation finished
+
+Selenium requires explicit waits, which is the source of **most test flakiness** I've encountered in real projects.
+
+> **My experience:** After migrating a 200-test Selenium suite to Playwright, our flakiness rate dropped from 12% to under 1%. That single change saved hours of debugging per week.
+
+### Parallel Execution
+
+| Feature              | Playwright       | Selenium       |
+| -------------------- | ---------------- | -------------- |
+| Built-in parallelism | ✅ Yes, per-file | Partial (Grid) |
+| Browser isolation    | ✅ Per-worker    | Manual         |
+| CI/CD setup          | Simple           | Complex (Grid) |
+| Speed (200 tests)    | ~3 minutes       | ~18 minutes    |
+
+### When to Choose Each
+
+**Choose Playwright when:**
+
+- Starting a new project from scratch
+- You need fast, reliable tests
+- Your team uses TypeScript/JavaScript
+- You need to test modern SPAs (React, Vue, Nuxt)
+
+**Choose Selenium when:**
+
+- You have a large existing Selenium suite
+- Your team uses Java, C#, or Ruby primarily
+- You need to test legacy applications on older browsers
+- Your organization mandates Selenium for compliance
+
+## My Verdict
+
+For new projects in 2024, **Playwright is the clear choice**. The developer experience is dramatically better, auto-waiting eliminates the #1 source of flakiness, and the built-in reporters are beautiful out of the box.
+
+That said, don't blindly migrate existing Selenium suites. Migration has a cost, and if your Selenium suite is stable and the team knows it well, the ROI might not justify the switch.
+
+The best QA engineers choose the right tool for the context — not the trendiest one.
+
+---
+
+_Have questions or a different perspective? Reach out via the [contact page](/contact) — I'd love to discuss._
+
+</BlogPost>

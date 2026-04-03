@@ -1,0 +1,592 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Dhiraj Raut — QA Engineer | Quality in Every Byte">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-ambient"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-status">
+            <span class="status-dot"></span>
+            <span>Available for new opportunities</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="hero-title-line1">Breaking Bugs,</span>
+            <span class="hero-title-line2">
+              <span class="text-primary">Shipping</span> Quality
+            </span>
+          </h1>
+
+          <p class="hero-description">
+            I'm <strong>Dhiraj Raut</strong> — a Software QA Engineer with 3+ years crafting
+            meticulous test strategies across manual, API, and automation domains.
+            I don't just find bugs. I <em>prevent</em> them.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/projects" class="btn btn-primary">
+              View Projects
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/about" class="btn btn-outline">
+              About Me
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">3+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Test Cases Written</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Projects Tested</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <!-- Terminal window -->
+          <div class="terminal hero-terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">qa-runner — bash</span>
+            </div>
+            <div class="terminal-body">
+              <div><span class="cmd">$</span> <span class="fn">npx playwright</span> test --reporter=html</div>
+              <div class="comment">  ✓ Running 47 tests...</div>
+              <div style="color: #28c840">  ✓ 44 passed (3.2s)</div>
+              <div style="color: var(--accent)">  ✗ 3 failed</div>
+              <div class="comment">  ┌─ Bug #42: null check missing</div>
+              <div class="comment">  ├─ Bug #43: race condition</div>
+              <div class="comment">  └─ Bug #44: auth token expiry</div>
+              <br />
+              <div><span class="cmd">$</span> <span class="fn">git</span> commit -m <span class="str">"fix: resolve 3 critical bugs"</span></div>
+              <div style="color: var(--primary)">  ✓ All tests passing</div>
+              <div><span class="cmd">$</span> <span class="cursor"></span></div>
+            </div>
+          </div>
+
+          <!-- Floating badges -->
+          <div class="floating-badge badge-playwright">
+            <img src="https://playwright.dev/img/playwright-logo.svg" width="16" height="16" alt="" />
+            Playwright
+          </div>
+          <div class="floating-badge badge-postman">
+            <svg width="14" height="14" viewBox="0 0 32 32" fill="#ff6c37"><circle cx="16" cy="16" r="16"/></svg>
+            Postman
+          </div>
+          <div class="floating-badge badge-pass">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#28c840" stroke-width="1.5" stroke-linecap="round"/></svg>
+            All Tests Passed
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      {['Manual Testing', 'API Testing', 'Playwright', 'Postman', 'Test Automation', 'Bug Hunting', 'QA Strategy', 'Performance Testing', 'CI/CD Integration', 'JIRA', 'Test Planning'].map(t => (
+        <span class="marquee-item">{t} <span class="marquee-sep">◆</span></span>
+      ))}
+      {['Manual Testing', 'API Testing', 'Playwright', 'Postman', 'Test Automation', 'Bug Hunting', 'QA Strategy', 'Performance Testing', 'CI/CD Integration', 'JIRA', 'Test Planning'].map(t => (
+        <span class="marquee-item">{t} <span class="marquee-sep">◆</span></span>
+      ))}
+    </div>
+  </div>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Featured Work</div>
+      <div class="projects-header">
+        <h2>Projects I've <span class="text-primary">Quality Assured</span></h2>
+        <a href="/projects" class="btn btn-outline">View All →</a>
+      </div>
+
+      <div class="projects-grid">
+        <article class="card project-card featured">
+          <div class="project-meta">
+            <div class="project-type badge green">Automation</div>
+            <div class="project-status">
+              <span class="status-dot" style="width:6px;height:6px;"></span>
+              <span style="font-size:0.7rem; color: var(--primary); font-family: var(--font-mono);">Live</span>
+            </div>
+          </div>
+          <h3 class="project-title">Gita Chrome Extension</h3>
+          <p class="project-desc">End-to-end testing suite for a Chrome extension that serves Bhagavat Gita slokas. Covers cross-browser compatibility, DOM interaction, and extension lifecycle testing using Playwright.</p>
+          <div class="project-tags">
+            <span class="tag">Playwright</span>
+            <span class="tag">Chrome Extension</span>
+            <span class="tag">E2E</span>
+          </div>
+          <a href="/projects#gita" class="project-link">
+            View details
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <div class="project-number">01</div>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-meta">
+            <div class="project-type badge purple">API Testing</div>
+          </div>
+          <h3 class="project-title">Daily Prices Email</h3>
+          <p class="project-desc">Automated API test suite validating email delivery pipeline, data accuracy for fuel & vegetable prices, and schedule reliability via Postman collections + Newman CLI.</p>
+          <div class="project-tags">
+            <span class="tag">Postman</span>
+            <span class="tag">Newman</span>
+            <span class="tag">API</span>
+          </div>
+          <a href="/projects#prices" class="project-link">
+            View details
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <div class="project-number">02</div>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-meta">
+            <div class="project-type badge">Manual</div>
+          </div>
+          <h3 class="project-title">Nepal Local Government App</h3>
+          <p class="project-desc">Comprehensive manual test plan covering filtering logic, local body data accuracy, and accessibility compliance for Nepal's local government directory application.</p>
+          <div class="project-tags">
+            <span class="tag">Manual</span>
+            <span class="tag">Accessibility</span>
+            <span class="tag">JIRA</span>
+          </div>
+          <a href="/projects#nepal" class="project-link">
+            View details
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <div class="project-number">03</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="section tech-section">
+    <div class="container">
+      <div class="section-label">Tech Stack</div>
+      <h2 data-animate>Tools I <span class="text-primary">Master</span></h2>
+      <p class="tech-sub" data-animate data-delay="1">The QA toolchain I rely on daily to ensure software quality</p>
+
+      <div class="tech-grid" data-animate data-delay="2">
+        {[
+          { name: 'Playwright', cat: 'Automation', icon: '🎭', color: '#45ba4b' },
+          { name: 'Cypress', cat: 'E2E Testing', icon: '🌲', color: '#17202c' },
+          { name: 'Postman', cat: 'API Testing', icon: '📮', color: '#ff6c37' },
+          { name: 'JIRA', cat: 'Bug Tracking', icon: '🐛', color: '#0052cc' },
+          { name: 'Linear', cat: 'Project Mgmt', icon: '📋', color: '#5e6ad2' },
+          { name: 'FastAPI', cat: 'Backend', icon: '⚡', color: '#009688' },
+          { name: 'Vue.js', cat: 'Frontend', icon: '🖖', color: '#42b883' },
+          { name: 'Newman', cat: 'CI Testing', icon: '🔁', color: '#ff6c37' },
+          { name: 'GitHub Actions', cat: 'CI/CD', icon: '🔧', color: '#2088ff' },
+          { name: 'k6', cat: 'Performance', icon: '📈', color: '#7d64ff' },
+        ].map(tech => (
+          <div class="tech-card">
+            <span class="tech-icon">{tech.icon}</span>
+            <div>
+              <div class="tech-name">{tech.name}</div>
+              <div class="tech-cat">{tech.cat}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES STRIP -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">What I Do</div>
+      <h2 data-animate>QA <span class="text-primary">Expertise</span></h2>
+      <div class="services-grid" data-animate data-delay="1">
+        {[
+          {
+            icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>`,
+            title: 'Manual Testing',
+            desc: 'Thorough exploratory and regression testing. I craft test cases, write bug reports, and validate edge cases humans miss.'
+          },
+          {
+            icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 9l3 3-3 3M12 15h4M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`,
+            title: 'API Testing',
+            desc: 'Postman collections, Newman CI integration, REST/GraphQL endpoint validation, contract testing & performance benchmarking.'
+          },
+          {
+            icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
+            title: 'Test Automation',
+            desc: 'Playwright suite with Page Object Model, CI/CD pipeline integration, and comprehensive HTML reporting.'
+          },
+          {
+            icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>`,
+            title: 'Performance Testing',
+            desc: 'Load, stress & spike testing using k6 and JMeter. Identifying bottlenecks before your users do.'
+          },
+        ].map((s, i) => (
+          <div class="card service-card" data-animate data-delay={String(i + 1)}>
+            <div class="service-icon" set:html={s.icon}></div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner" data-animate>
+        <div class="cta-glow"></div>
+        <div class="cta-content">
+          <div class="section-label">Let's Connect</div>
+          <h2>Ready to <span class="text-primary">Ship Quality</span> Together?</h2>
+          <p>Whether you need a QA engineer for your team or a consultant to audit your testing strategy — let's talk.</p>
+          <div style="display:flex; gap: 1rem; flex-wrap:wrap; margin-top:2rem;">
+            <a href="/contact" class="btn btn-primary">
+              Get in Touch
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+            <a href="/blog" class="btn btn-outline">Read My Blog</a>
+          </div>
+        </div>
+        <div class="cta-code">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">contact.sh</span>
+            </div>
+            <div class="terminal-body" style="font-size:0.75rem;">
+              <div><span class="comment"># Initiate contact</span></div>
+              <div><span class="fn" >send_email</span>(<span class="str"></span>)</div>
+              <div style="margin-top:0.5rem;"><span class="comment"># Expected response</span></div>
+              <div style="color:#28c840">→ Response within 24h ✓</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.text-primary { color: var(--primary); }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 5rem;
+}
+.hero-ambient {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(0,229,160,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 3rem 0;
+}
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: var(--primary-dim);
+  border: 1px solid rgba(0,229,160,0.2);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+.hero-title-line2 { margin-top: 0.1em; }
+.hero-description {
+  font-size: 1rem;
+  color: var(--text-2);
+  max-width: 480px;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+.hero-description strong { color: var(--text); font-weight: 600; }
+.hero-description em { color: var(--primary); font-style: normal; font-weight: 600; }
+.hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.stat { text-align: left; }
+.stat-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+  display: block;
+}
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+}
+
+/* Terminal in hero */
+.hero-terminal {
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.hero-visual {
+  position: relative;
+}
+.floating-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border-accent);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text);
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.badge-playwright { top: -1rem; right: -1rem; animation-delay: 0s; }
+.badge-postman { bottom: 2rem; left: -2rem; animation-delay: 1s; }
+.badge-pass { bottom: -0.5rem; right: 1rem; animation-delay: 2s; color: #28c840; border-color: rgba(40,200,64,0.3); }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Marquee */
+.marquee-wrap {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0;
+  background: var(--bg-2);
+  position: relative;
+  z-index: 1;
+}
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+.marquee-item {
+  white-space: nowrap;
+  padding: 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+}
+.marquee-sep { color: var(--primary); margin-left: 0.5rem; font-size: 0.5rem; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Projects */
+.projects-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.projects-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 1.25rem;
+}
+.project-card {
+  position: relative;
+}
+.project-card.featured {
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(0,229,160,0.05) 100%);
+  border-color: rgba(0,229,160,0.15);
+}
+.project-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.project-status { display: flex; align-items: center; gap: 0.35rem; }
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+.project-desc {
+  font-size: 0.83rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+.project-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s;
+}
+.project-link:hover { gap: 0.7rem; }
+.project-number {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.75rem;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Tech */
+.tech-section { background: var(--bg-2); }
+.tech-sub { color: var(--text-2); margin: 0.5rem 0 2.5rem; max-width: 500px; }
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+.tech-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+.tech-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.tech-icon { font-size: 1.25rem; }
+.tech-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; color: var(--text); }
+.tech-cat { font-size: 0.7rem; color: var(--text-3); margin-top: 0.1rem; }
+
+/* Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+.service-card { text-align: left; }
+.service-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius);
+  background: var(--primary-dim);
+  border: 1px solid rgba(0,229,160,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+.service-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.service-card p { font-size: 0.83rem; color: var(--text-2); line-height: 1.65; }
+
+/* CTA Banner */
+.cta-banner {
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--bg-2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cta-glow {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-content { position: relative; }
+.cta-content h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.75rem; }
+.cta-content p { color: var(--text-2); max-width: 440px; }
+.cta-code { width: 280px; flex-shrink: 0; position: relative; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .cta-banner { grid-template-columns: 1fr; }
+  .cta-code { width: 100%; }
+}
+</style>

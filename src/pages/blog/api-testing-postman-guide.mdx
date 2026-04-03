@@ -1,0 +1,214 @@
+import BlogPost from "../../layouts/BlogPost.astro";
+
+<BlogPost
+  title="The Complete API Testing Guide with Postman and Newman"
+  excerpt="From writing your first collection to running tests in a GitHub Actions pipeline — everything a QA engineer needs to master API testing."
+  date="2024-10-28"
+  readTime="12 min read"
+  tags={['API Testing', 'Postman', 'Newman', 'CI/CD']}
+>
+
+## Why API Testing Deserves Your Full Attention
+
+Most QA engineers start with UI testing because it's visible and intuitive. But **API testing gives you the best return on testing investment**. APIs are:
+
+- Faster to test (no rendering overhead)
+- More stable than UIs (fewer visual changes)
+- Closer to the business logic
+- The integration point between frontend and backend
+
+If the API is broken, the UI _will_ be broken. Test the API first.
+
+## Postman: Your API Testing Command Center
+
+Postman is much more than a tool for making HTTP requests. Let me walk through the features that matter for QA.
+
+### Structuring Your Collection
+
+```
+📁 My App API Tests
+  📁 Authentication
+    📄 POST /auth/login — valid credentials
+    📄 POST /auth/login — invalid password
+    📄 POST /auth/login — disabled account
+    📄 GET  /auth/me — authenticated
+    📄 GET  /auth/me — unauthenticated
+  📁 User Management
+    📄 GET  /users — list all
+    📄 POST /users — create user
+    📄 PUT  /users/:id — update user
+    📄 DEL  /users/:id — delete user
+  📁 Edge Cases
+    📄 POST /users — missing required fields
+    📄 POST /users — duplicate email
+```
+
+### Writing Meaningful Tests
+
+This is where most QA engineers stop short. Postman tests go beyond "status code is 200":
+
+```javascript
+// Test 1: Status code
+pm.test("Status code is 200", () => {
+  pm.response.to.have.status(200);
+});
+
+// Test 2: Response time
+pm.test("Response time < 500ms", () => {
+  pm.expect(pm.response.responseTime).to.be.below(500);
+});
+
+// Test 3: Response schema
+pm.test("Response has required fields", () => {
+  const body = pm.response.json();
+  pm.expect(body).to.have.property("id");
+  pm.expect(body).to.have.property("email");
+  pm.expect(body.email).to.be.a("string");
+  pm.expect(body.id).to.be.a("number");
+});
+
+// Test 4: Business logic
+pm.test("Created user is not admin by default", () => {
+  const body = pm.response.json();
+  pm.expect(body.role).to.equal("user");
+});
+
+// Test 5: Save for chaining
+pm.environment.set("userId", pm.response.json().id);
+```
+
+### Environment Variables and Chaining
+
+The real power of Postman comes from **chaining requests**:
+
+1. `POST /auth/login` → save `token` from response
+2. `POST /users` (with Bearer token) → save `userId`
+3. `PUT /users/:id` → use `userId` to update
+4. `DELETE /users/:id` → clean up test data
+
+This lets you test complete business workflows, not just individual endpoints.
+
+## Newman: From Postman to CI/CD
+
+Newman is the CLI runner for Postman collections. It's what makes API testing a first-class citizen in your pipeline.
+
+### Basic Usage
+
+```bash
+# Install Newman
+npm install -g newman newman-reporter-htmlextra
+
+# Run a collection
+newman run my-collection.json \
+  --environment staging.json \
+  --reporters cli,htmlextra \
+  --reporter-htmlextra-export reports/api-test-report.html
+```
+
+### GitHub Actions Integration
+
+```yaml
+# .github/workflows/api-tests.yml
+name: API Tests
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  api-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Newman
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Run API Tests
+        run: |
+          newman run tests/api/collection.json \
+            --environment tests/api/env-staging.json \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export reports/api-tests.html \
+            --bail
+
+      - name: Upload Test Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-report
+          path: reports/api-tests.html
+```
+
+## Common API Testing Patterns
+
+### 1. Contract Testing
+
+Verify the API response matches the agreed contract:
+
+```javascript
+const Ajv = require("ajv");
+const ajv = new Ajv();
+
+const schema = {
+  type: "object",
+  required: ["id", "email", "createdAt"],
+  properties: {
+    id: { type: "integer" },
+    email: { type: "string", format: "email" },
+    createdAt: { type: "string", format: "date-time" },
+  },
+};
+
+pm.test("Response matches contract", () => {
+  const valid = ajv.validate(schema, pm.response.json());
+  pm.expect(valid).to.be.true;
+});
+```
+
+### 2. Negative Testing
+
+Don't just test the happy path:
+
+| Scenario               | Expected Status   |
+| ---------------------- | ----------------- |
+| Missing required field | 400 Bad Request   |
+| Invalid email format   | 422 Unprocessable |
+| Duplicate record       | 409 Conflict      |
+| Unauthorized           | 401 Unauthorized  |
+| Forbidden resource     | 403 Forbidden     |
+| Non-existent resource  | 404 Not Found     |
+
+### 3. Security Testing
+
+```javascript
+// Test: SQL injection in query params
+// Request: GET /users?search=' OR '1'='1
+pm.test("SQL injection blocked", () => {
+  pm.expect(pm.response.code).to.be.oneOf([400, 422]);
+  pm.expect(pm.response.json()).to.not.have.property("data");
+});
+```
+
+## My Recommended Workflow
+
+1. **Export the API spec** (OpenAPI/Swagger) from the developer
+2. **Generate a base collection** from the spec using Postman's import
+3. **Add test scripts** to every request — status, schema, business logic
+4. **Create environment files** for dev, staging, production
+5. **Set up Newman** in CI to run on every PR
+6. **Review the HTML report** after each run
+
+API testing is where QA engineers create the most value with the least effort. Master it.
+
+---
+
+_Questions? I'm happy to review your Postman collection setup. [Get in touch](/contact)._
+
+</BlogPost>

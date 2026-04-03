@@ -1,0 +1,145 @@
+import BlogPost from "../../layouts/BlogPost.astro";
+
+<BlogPost
+  title="Load Testing Your APIs with k6: A Practical Introduction"
+  excerpt="Get started with k6 to simulate real user load on your APIs. Covers VU configuration, thresholds, and reading results."
+  date="2024-09-05"
+  readTime="9 min read"
+  tags={['Performance', 'k6', 'Load Testing']}
+>
+
+## Why Performance Testing Is a QA Responsibility
+
+Performance testing often gets treated as a DevOps or infrastructure concern. But QA engineers are perfectly positioned to lead it — we already know the critical user journeys, understand the business logic, and have the testing mindset.
+
+k6 is the modern tool of choice: it's developer-friendly, scriptable in JavaScript, and integrates beautifully with CI/CD pipelines.
+
+## Installing k6
+
+```bash
+# macOS
+brew install k6
+
+# Ubuntu/Debian
+sudo gpg -k
+sudo gpg --no-default-keyring \
+  --keyring /usr/share/keyrings/k6-archive-keyring.gpg \
+  --keyserver hkp://keyserver.ubuntu.com:80 \
+  --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" \
+  | sudo tee /etc/apt/sources.list.d/k6.list
+sudo apt-get update && sudo apt-get install k6
+
+# Windows
+winget install k6
+```
+
+## Your First k6 Script
+
+```javascript
+// load-test.js
+import http from "k6/http";
+import { check, sleep } from "k6";
+
+export const options = {
+  vus: 10, // 10 virtual users
+  duration: "30s", // run for 30 seconds
+};
+
+export default function () {
+  const response = http.get("https://api.myapp.com/products");
+
+  check(response, {
+    "status is 200": (r) => r.status === 200,
+    "response time < 500ms": (r) => r.timings.duration < 500,
+    "has products array": (r) => JSON.parse(r.body).products !== undefined,
+  });
+
+  sleep(1); // 1 second pause between iterations
+}
+```
+
+Run it: `k6 run load-test.js`
+
+## Understanding the Output
+
+```
+✓ status is 200 ............... 299/299 (100.00%)
+✓ response time < 500ms ........ 287/299 (95.99%)  ← 4% failures!
+✗ has products array ........... 299/299 (100.00%)
+
+http_req_duration............: avg=312ms min=89ms  med=287ms max=2.1s p(90)=580ms p(95)=892ms
+http_reqs....................: 299    9.97/s
+```
+
+Key metrics to watch:
+
+- **p(95)** — 95th percentile response time (the "slowest reasonable request")
+- **http_req_failed** — percentage of failed requests
+- **iterations** — total number of test iterations completed
+
+## Load Testing Scenarios
+
+### Smoke Test — Verify baseline
+
+```javascript
+export const options = {
+  vus: 1,
+  duration: "1m",
+};
+```
+
+### Load Test — Normal expected load
+
+```javascript
+export const options = {
+  stages: [
+    { duration: "2m", target: 50 }, // ramp up to 50 VUs
+    { duration: "5m", target: 50 }, // hold at 50
+    { duration: "2m", target: 0 }, // ramp down
+  ],
+};
+```
+
+### Stress Test — Find the breaking point
+
+```javascript
+export const options = {
+  stages: [
+    { duration: "2m", target: 100 },
+    { duration: "5m", target: 200 },
+    { duration: "2m", target: 300 },
+    { duration: "2m", target: 400 }, // keep pushing
+    { duration: "3m", target: 0 }, // recovery
+  ],
+};
+```
+
+## Setting Thresholds (Pass/Fail Criteria)
+
+```javascript
+export const options = {
+  vus: 50,
+  duration: "5m",
+  thresholds: {
+    http_req_duration: ["p(95)<500"], // 95% of requests under 500ms
+    http_req_failed: ["rate<0.01"], // Less than 1% errors
+    checks: ["rate>0.99"], // 99%+ checks pass
+  },
+};
+```
+
+If thresholds are violated, k6 exits with a non-zero code — perfect for CI/CD gates.
+
+## The Performance Testing Mindset
+
+Before running any performance test, define your **success criteria** upfront:
+
+1. What load level is "normal" for this API?
+2. What's the acceptable response time at normal load?
+3. What's the maximum load the system must handle?
+4. What's acceptable error rate under peak load?
+
+Without these, you're just generating numbers without meaning. Performance testing is only useful when it's tied to real business expectations.
+
+</BlogPost>

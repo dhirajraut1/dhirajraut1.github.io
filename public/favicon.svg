@@ -1,0 +1,17 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Yellow Circle -->
+  <circle cx="100" cy="100" r="90" fill="#FFD54F"/>
+
+  <!-- DR Text -->
+  <text 
+    x="50%" 
+    y="55%" 
+    text-anchor="middle" 
+    fill="#1A1A1A" 
+    font-size="64" 
+    font-family="Arial, Helvetica, sans-serif" 
+    font-weight="bold"
+    dominant-baseline="middle">
+    DR
+  </text>
+</svg>

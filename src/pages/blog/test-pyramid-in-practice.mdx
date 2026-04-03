@@ -1,0 +1,72 @@
+import BlogPost from "../../layouts/BlogPost.astro";
+
+<BlogPost
+  title="The Test Pyramid Isn't Dead — You're Just Using It Wrong"
+  excerpt="The test pyramid has been misunderstood for years. Here's how to actually apply it to get maximum coverage with minimum flakiness."
+  date="2024-10-10"
+  readTime="6 min read"
+  tags={['Strategy', 'Test Pyramid', 'Best Practices']}
+>
+
+## The Pyramid Is a Principle, Not a Rule
+
+When Mike Cohn introduced the testing pyramid in 2009, he gave us a **mental model** — not a rigid formula. Yet I see teams treating it like a sacred ratio: "We need 70% unit, 20% integration, 10% E2E, no exceptions."
+
+That misses the point.
+
+## What the Pyramid Actually Tells Us
+
+The pyramid communicates three things:
+
+1. **Speed decreases as you go up** — unit tests run in milliseconds; E2E tests take seconds or minutes
+2. **Cost increases as you go up** — E2E tests are expensive to write, maintain, and debug
+3. **Isolation decreases as you go up** — unit tests pinpoint bugs; E2E tests just tell you something is broken
+
+The pyramid is about **optimizing for fast feedback** at the right cost. It's not about hitting a specific ratio.
+
+## Where Teams Go Wrong
+
+### Too Many E2E Tests
+
+I've seen codebases with 500+ E2E tests covering every possible user journey. The result? A test suite that takes 3 hours to run and has 30% flakiness. Nobody trusts it. Nobody runs it locally. It becomes a checkbox exercise.
+
+> **Rule of thumb:** If your E2E test suite takes more than 15 minutes to run, you have too many E2E tests.
+
+### Unit Tests Without Integration Tests
+
+The opposite problem: teams write thousands of unit tests that pass in isolation but miss integration bugs. Every individual function works perfectly — but together, they're broken.
+
+```python
+# Unit test passes ✓
+def test_calculate_price():
+    assert calculate_price(100, 0.1) == 90.0
+
+# But the integration is broken ✗
+# calculate_price() receives a string "100" from the API layer
+# causing a TypeError in production
+```
+
+### The "Ice Cream Cone" Anti-Pattern
+
+The dreaded inversion of the pyramid: mostly E2E tests, few unit tests. Usually happens in teams that came from manual testing backgrounds and automated what they were already doing manually.
+
+## A More Practical Model
+
+Instead of rigid percentages, think in terms of **testing purpose**:
+
+| Layer       | Purpose                         | Speed   | When to Add                    |
+| ----------- | ------------------------------- | ------- | ------------------------------ |
+| Unit        | Verify pure logic               | Instant | Every business rule            |
+| Integration | Verify components work together | Fast    | Every service boundary         |
+| API         | Verify contracts                | Fast    | Every endpoint                 |
+| E2E         | Verify critical user journeys   | Slow    | Happy path + top 3 error paths |
+
+## The Pyramid Still Works — Applied Correctly
+
+Keep your E2E tests focused on the **5-10 most critical user journeys**. Write integration and API tests to cover the variety of inputs and edge cases. Use unit tests for pure logic and algorithm verification.
+
+When a production bug is found, add a test at the **lowest possible level** that would have caught it.
+
+That's the pyramid working as intended.
+
+</BlogPost>
